@@ -24,4 +24,11 @@ describe('tests dish class', () => {
 
         expect(body).toEqual(testDish2);
     });
+
+    it('tests .get /dish, returns [testDish, testDish2]', async () => {
+        const { body } = await fakeRequest(app)
+            .get('/dish');
+
+        expect(body.toEqual([testDish, testDish2]))
+    })
 })
