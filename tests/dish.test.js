@@ -2,7 +2,8 @@ const fs = require('fs');
 const pool = require('../lib/utils/pool.js');
 const fakeRequest = require('supertest');
 const app = require('../lib/app.js');
-const { testDish, testDish2, testIngredient1, testIngredient2, testIngredient3, testIngredient4 } = require('./test-data.js');
+const { testDish, updatedTestDish1, testDish2 } = require('./test-data.js');
+const { update } = require('../lib/models/dish.js');
 
 describe('tests dish class', () => {
     afterAll(() => {
@@ -32,20 +33,35 @@ describe('tests dish class', () => {
         expect(body).toEqual([testDish, testDish2])
     });
 
-    it('test .get /dish/:id, returns joined testDish', async () => {
+    it('test .get /dish/:id, returns joined testDish1', async () => {
         const { body } = await fakeRequest(app)
             .get(`/dish/${testDish.id}`)
 
         expect(body).toEqual({
-            name: 'biscuits',
+            name: 'cookies',
             ingredients: ['flour', 'water', 'sugar', 'butter']
         })
     })
 
-    it('test .get /dish/:id, returns joined testDish', async () => {
+    it('test .get /dish/:id, returns joined testDish2', async () => {
         const { body } = await fakeRequest(app)
             .get(`/dish/${testDish2.id}`)
 
         expect(body).toEqual({ name: 'roux', ingredients: ['flour', 'water', 'butter'] })
+    });
+
+    it('test .set /dish/:id, returns updatedTestDish1', async () => {
+        const { body } = await fakeRequest(app)
+            .put(`/dish/${updatedTestDish1.id}`)
+            .send(updatedTestDish1);
+
+        expect(body).toEqual(updatedTestDish1)
+    })
+
+    it('test .delete /dish/:id, returns updatedTestDish1', async () => {
+        const { body } = await fakeRequest(app)
+            .delete(`/dish/${updatedTestDish1.id}`);
+
+        expect(body).toEqual(updatedTestDish1)
     })
 })

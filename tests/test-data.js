@@ -2,6 +2,12 @@
 const testDish = {
     id: '1',
     ingredient_ids: [1, 2, 3, 4],
+    name: 'cookies'
+}
+
+const updatedTestDish1 = {
+    id: '1',
+    ingredient_ids: [1, 2, 3],
     name: 'biscuits'
 }
 
@@ -50,4 +56,4 @@ const testIngredient5 = {
 
 
 
-module.exports = { testDish, testDish2, testIngredient1, updatedTestIngredient1, testIngredient2, testIngredient3, testIngredient4, testIngredient5 }
+module.exports = { testDish, updatedTestDish1, testDish2, testIngredient1, updatedTestIngredient1, testIngredient2, testIngredient3, testIngredient4, testIngredient5 }
