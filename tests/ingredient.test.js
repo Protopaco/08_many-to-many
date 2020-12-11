@@ -54,4 +54,13 @@ describe('tests ingredient class', () => {
         ])
 
     })
+
+    it('test .getById / ingredient, returns testIngredient1', async () => {
+        const { body } = await fakeRequest(app)
+            .get(`/ingredient/${testIngredient1}`);
+
+        expect(body).toEqual(testIngredient1);
+
+
+    })
 })
