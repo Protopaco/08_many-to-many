@@ -11,11 +11,11 @@ CREATE TABLE ingredients (
 CREATE TABLE dishes (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     ingredient_id NUMBER[] NOT NULL,
-    price NUMBER NOT NULL
+    method TEXT NOT NULL
 )
 
 CREATE TABLE ingredients_dishes (
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    ingredient_id NUMBER NOT NULL,
-    dish_id NUMBER NOT NULL
+    ingredient_id BIGINT REFERENCES ingredients(id),
+    dish_id BIGINT REFERENCES ingredients(id),
+    PRIMARY KEY(ingredient_id, dish_id)
 )
