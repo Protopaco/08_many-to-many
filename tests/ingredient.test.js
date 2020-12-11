@@ -2,7 +2,8 @@ const fs = require('fs');
 const pool = require('../lib/utils/pool.js');
 const fakeRequest = require('supertest');
 const app = require('../lib/app.js');
-const { testDish, testDish2, testIngredient1, testIngredient2, testIngredient3, testIngredient4 } = require('./test-data.js')
+const { testIngredient1, updatedTestIngredient1, testIngredient2, testIngredient3, testIngredient4, testIngredient5 } = require('./test-data.js');
+const { update } = require('../lib/models/ingredient.js');
 
 describe('tests ingredient class', () => {
     beforeAll(() => {
@@ -45,22 +46,45 @@ describe('tests ingredient class', () => {
         expect(body).toEqual(testIngredient4);
     });
 
+    it('tests .post /ingredient, returns testIngredient5', async () => {
+        const { body } = await fakeRequest(app)
+            .post('/ingredient')
+            .send(testIngredient5);
+
+        expect(body).toEqual(testIngredient5);
+    });
+
     it('tests .get /ingredient, returns all ingredients', async () => {
         const { body } = await fakeRequest(app)
             .get('/ingredient')
 
         expect(body).toEqual([
-            testIngredient1, testIngredient2, testIngredient3, testIngredient4
+            testIngredient1, testIngredient2, testIngredient3, testIngredient4, testIngredient5
         ])
 
     })
 
-    it('test .getById / ingredient, returns testIngredient1', async () => {
+    it('test .getById /ingredient, returns testIngredient1', async () => {
         const { body } = await fakeRequest(app)
-            .get(`/ingredient/${testIngredient1}`);
+            .get(`/ingredient/${testIngredient1.id}`);
 
         expect(body).toEqual(testIngredient1);
 
 
+    });
+
+    it('test .update /ingredient, returns updatedTestIngredient1', async () => {
+        const { body } = await fakeRequest(app)
+            .put(`/ingredient/${updatedTestIngredient1.id}`)
+            .send(updatedTestIngredient1);
+
+        expect(body).toEqual(updatedTestIngredient1)
+    })
+
+    it('test .delete /ingredient, returns testIngredient5', async () => {
+        const { body } = await fakeRequest(app)
+            .delete(`/ingredient/${testIngredient5.id}`)
+
+        expect(body).toEqual(testIngredient5);
     })
 })

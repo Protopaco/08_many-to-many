@@ -17,6 +17,12 @@ const testIngredient1 = {
     available: true
 }
 
+const updatedTestIngredient1 = {
+    id: '1',
+    name: 'butter',
+    available: false
+}
+
 const testIngredient2 = {
     id: '2',
     name: 'flour',
@@ -35,7 +41,13 @@ const testIngredient4 = {
     available: false
 }
 
+const testIngredient5 = {
+    id: '5',
+    name: 'salt',
+    available: false
+}
 
 
 
-module.exports = { testDish, testDish2, testIngredient1, testIngredient2, testIngredient3, testIngredient4 }
+
+module.exports = { testDish, testDish2, testIngredient1, updatedTestIngredient1, testIngredient2, testIngredient3, testIngredient4, testIngredient5 }
