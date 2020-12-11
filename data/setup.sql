@@ -10,8 +10,8 @@ CREATE TABLE ingredients (
 
 CREATE TABLE dishes (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    ingredient_id NUMBER[],
-    method TEXT
+    ingredient_ids NUMBER[],
+    name TEXT
 )
 
 CREATE TABLE ingredients_dishes (
