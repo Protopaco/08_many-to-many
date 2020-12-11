@@ -4,14 +4,14 @@ DROP TABLE IF EXISTS ingredients_dishes CASCADE;
 
 CREATE TABLE ingredients (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    price NUMBER NOT NULL,
-    available BOOLEAN NOT NULL
+    price NUMBER,
+    available BOOLEAN
 )
 
 CREATE TABLE dishes (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    ingredient_id NUMBER[] NOT NULL,
-    method TEXT NOT NULL
+    ingredient_id NUMBER[],
+    method TEXT
 )
 
 CREATE TABLE ingredients_dishes (
