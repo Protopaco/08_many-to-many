@@ -1,12 +1,12 @@
 
 const testDish = {
     id: '1',
-    ingredient_ids: [1],
+    ingredient_ids: [1, 2, 3, 4],
     name: 'biscuits'
 }
 
 const testDish2 = {
-    id: '1',
+    id: '2',
     ingredient_ids: [1, 2],
     name: 'roux'
 }

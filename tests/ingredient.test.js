@@ -20,4 +20,28 @@ describe('tests ingredient class', () => {
 
         expect(body).toEqual(testIngredient1);
     })
+
+    it('tests .post /ingredient, returns testIngredient2', async () => {
+        const { body } = await fakeRequest(app)
+            .post('/ingredient')
+            .send(testIngredient2);
+
+        expect(body).toEqual(testIngredient2);
+    })
+
+    it('tests .post /ingredient, returns testIngredient3', async () => {
+        const { body } = await fakeRequest(app)
+            .post('/ingredient')
+            .send(testIngredient3);
+
+        expect(body).toEqual(testIngredient3);
+    })
+
+    it('tests .post /ingredient, returns testIngredient4', async () => {
+        const { body } = await fakeRequest(app)
+            .post('/ingredient')
+            .send(testIngredient4);
+
+        expect(body).toEqual(testIngredient4);
+    })
 })
