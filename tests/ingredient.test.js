@@ -43,5 +43,15 @@ describe('tests ingredient class', () => {
             .send(testIngredient4);
 
         expect(body).toEqual(testIngredient4);
+    });
+
+    it('tests .get /ingredient, returns all ingredients', async () => {
+        const { body } = await fakeRequest(app)
+            .get('/ingredient')
+
+        expect(body).toEqual([
+            testIngredient1, testIngredient2, testIngredient3, testIngredient4
+        ])
+
     })
 })
