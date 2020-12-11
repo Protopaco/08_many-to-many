@@ -7,7 +7,7 @@ const testDish = {
 
 const testDish2 = {
     id: '2',
-    ingredient_ids: [1, 2],
+    ingredient_ids: [1, 2, 3],
     name: 'roux'
 }
 
